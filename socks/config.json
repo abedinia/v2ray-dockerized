@@ -3,21 +3,17 @@
         "loglevel": "warning"
     },
     "inbound": {
-        "port": 1431,
-        "listen": "0.0.0.0",
-        "protocol": "vmess",
-        "settings": {
-            "auth": null,
-            "udp": false,
-            "ip": null,
-            "clients": [
-                {
-                    "id": "960c88d9-267c-4d36-81ae-a286565f9106",
-                    "alterId": 233,
-                    "security": null
-                }
-            ]
-        },
+        "auth": "noauth",
+        "accounts": [
+          {
+            "user": "Yz@vLDm2WGXEBB1!2dxQ!TRX0HGMUC#I",
+            "pass": "clA2e6@sSo5^5o2M%J7%PKCBBxN*tly2"
+          }
+        ],
+        "udp": false,
+        "ip": "127.0.0.1",
+        "userLevel": 0
+      },
         "streamSettings": {
             "network": "tcp",
             "security": "",
