@@ -1,0 +1,57 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+      {
+              "listen": "0.0.0.0",
+              "port": 1433,
+              "protocol": "http",
+              "settings": {
+                  "udp": true,
+                  "accounts": [
+                      {
+                          "user": "@Lz3Y1tbxNz%xgpflZ0z16&t",
+                          "pass": "xmb$78Y2U@6Xj2UGCi3#MTYk"
+                      }
+                  ]
+              }
+          },
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct"
+        }
+    ],
+    "routing": {
+        "strategy": "rules",
+        "settings": {
+            "rules": [
+                {
+                    "type": "field",
+                    "outboundTag": "direct",
+                    "inboundTag": [
+                        "mydirect"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "domain": [
+                        "regexp:.*\\.ir$"
+                    ],
+                    "outboundTag": "direct"
+                },
+                {
+                    "type": "field",
+                    "ip": [
+                        "geoip:private",
+                        "geoip:ir"
+                    ],
+                    "outboundTag": "direct"
+                }
+            ]
+        }
+    }
+}
