@@ -1,0 +1,54 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+          "tag": "tg-in",
+          "port": 443,
+          "protocol": "mtproto",
+          "settings": {
+            "users": [{"secret": "4G*1pRYy1Lfi&hSF@PAKQnK#T@Mi%C6PK3H97t!DQIc&fF3&gUXDsL20VGq0YSfQ48D!$v"}]
+          }
+        }
+    ],
+    "outbounds": [
+        {
+          "tag": "tg-out",
+          "protocol": "mtproto",
+          "settings": {}
+        }
+    ],
+    "routing": {
+        "type": "field",
+        "inboundTag": ["tg-in"],
+        "outboundTag": "tg-out",
+        "strategy": "rules",
+        "settings": {
+            "rules": [
+                {
+                    "type": "field",
+                    "outboundTag": "direct",
+                    "inboundTag": [
+                        "mydirect"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "domain": [
+                        "regexp:.*\\.ir$"
+                    ],
+                    "outboundTag": "direct"
+                },
+                {
+                    "type": "field",
+                    "ip": [
+                        "geoip:private",
+                        "geoip:ir"
+                    ],
+                    "outboundTag": "direct"
+                }
+            ]
+        }
+    }
+}
