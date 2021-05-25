@@ -22,7 +22,7 @@
         "settings": {
             "vnext": [
                 {
-                    "address": "<<ADDR>>",
+                    "address": "185.235.43.15",
                     "port": 1431,
                     "users": [
                         {
