@@ -1,0 +1,25 @@
+version: "3"
+services:
+  vmess:
+    image: v2ray/official
+    hostname: v2ray-vmess
+    container_name: v2ray-vmess
+    restart: always
+    command: ["v2ray","-config=/etc/v2ray/vmess.json"]
+    ports:
+      - 1431:1431
+      - 1431:1431/udp
+    volumes:
+      - ./:/etc/v2ray
+
+  shadowsocks:
+    image: v2ray/official
+    hostname: v2ray-shadowsocks
+    container_name: v2ray-shadowsocks
+    restart: always
+    command: ["v2ray","-config=/etc/v2ray/shadowsocks.json"]
+    ports:
+      - 1432:1432
+      - 1432:1432/udp
+    volumes:
+      - ./:/etc/v2ray
